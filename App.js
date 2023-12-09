@@ -1,55 +1,30 @@
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.js to start working on your app!</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ProfileScreen from './Profile.js';
+import HomeScreen from './src/Home.js';
+import QuestionScreen from './src/Question.js';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f927a8',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = ({ navigation }) => {
-  return (
-    <Button
-      title="Go to Sita's profile"
-      onPress={() =>
-        navigation.navigate('Profile', { name: 'Sita' })
-      }
-    />
-  );
-};
-
-const MyStack = () => {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Welcome' }}
-        />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Welcome' }} />
+        <Stack.Screen name="QuestionScreen" component={QuestionScreen} options={{ title: 'New Question' }} />
       </Stack.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
   );
-};
-
-export default MyStack;
+}
