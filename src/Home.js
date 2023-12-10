@@ -19,13 +19,16 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import PagerView from 'react-native-pager-view';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import QuestionScreen from './Question.js';
+// import QuestionScreen from './Question.js';
+// import SolutionsScreen from './Solutions.js';
+// import LoginScreen from './Login.js';
+
 
 
 // import Animated, { useHandler, useEvent } from 'react-native-reanimated';
 
+const Stack = createNativeStackNavigator();
 
-import SolutionsScreen from './Solutions.js';
 
 const styles = StyleSheet.create({
   overlay: {
@@ -168,7 +171,7 @@ function pageHasScrolled() {
 
 }
 
-const Page = ({ navigation }) => {
+export default function HomeScreen({ navigation, route }) {
 
   const video2 = React.useRef(null);
   const [status2, setStatus2] = React.useState({});
@@ -176,7 +179,7 @@ const Page = ({ navigation }) => {
 
   //backup uri's: 
   //
-  
+
 
 
 
@@ -215,18 +218,33 @@ const Page = ({ navigation }) => {
 
 
 
-const Stack = createNativeStackNavigator();
 
-function App() {
-  return (
-    <NavigationContainer independent = {true}>
-      <Stack.Navigator initialRouteName="Home" independent = {true}>
-        <Stack.Screen name="Home" component={Page} />
-        <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} />
-        <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+// export default function HomeScreen({ navigation, route }) {
+//   <NavigationContainer>
+//     <Stack.Navigator>
+//       <Stack.Screen
+//         name="Page"
+//         component={Page}
+//         // options={{ title: 'Welcome' }}
+//         options={{ headerShown: false }}
+//       />
+//       {/* <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} /> */}
+//       {/* <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} options={{ headerShown: false}} />
+//       <Stack.Screen name="QuestionScreen" component={QuestionScreen} options={{ headerShown: false}} /> */}
+//     </Stack.Navigator>
+//   </NavigationContainer>
+// }
+// function HomeScreen({navigation, route}) {
+//   return (
+//     <NavigationContainer independent = {true}>
+//       <Stack.Navigator independent = {true}>
+//         <Stack.Screen name="LoginScreen" component={LoginScreen} />
+//         <Stack.Screen name="Home" component={Page} />
+//         <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} />
+//         <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
 
-export default App;
+// export default App;
