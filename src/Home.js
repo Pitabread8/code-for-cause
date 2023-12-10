@@ -65,6 +65,13 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
 
   },
+  questionButton: {
+    position: 'absolute',
+    bottom: '20%',
+    right: '5%',
+    alignSelf: 'flex-end',
+
+  },
   solutions: {
     position: 'absolute',
     bottom: '30%',
@@ -105,6 +112,9 @@ const VideoPlayer = ({ uriIn }) => {
     navigation.navigate('SolutionsScreen')
 
   };
+  const askQuestion = () => {
+    navigation.navigate('QuestionScreen')
+  }
 
   return (
     <View>
@@ -139,6 +149,15 @@ const VideoPlayer = ({ uriIn }) => {
 
       </View>
 
+      <View style={styles.questionButton}>
+        <TouchableOpacity onPress={askQuestion}>
+          <FontAwesome5 name="rocketchat" size={50} color="black" />
+        </TouchableOpacity>
+
+      </View>
+
+
+
     </View>
   );
 };
@@ -148,11 +167,17 @@ function pageHasScrolled() {
   console.log("page has Scrolled")
 
 }
+
 const Page = ({ navigation }) => {
 
   const video2 = React.useRef(null);
   const [status2, setStatus2] = React.useState({});
   // const AnimatedPager = Animated.createAnimatedComponent(PagerView);
+
+  //backup uri's: 
+  //
+  
+
 
 
   return (
@@ -160,7 +185,7 @@ const Page = ({ navigation }) => {
       <View key="1" style={styles.container}>
 
         <View style={styles.container}>
-          <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702167830~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2176%2F17%2F435882538%2F1900090885.mp4~hmac=2a068126d75ff3b1cc51797157689af3f4a24e15149696e38b48ccba20ec4a23/vimeo-prod-skyfire-std-us/01/2176/17/435882538/1900090885.mp4'>
+          <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
 
 
           </VideoPlayer>
@@ -171,10 +196,16 @@ const Page = ({ navigation }) => {
 
       </View>
       <View key="2">
-        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702167830~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2176%2F17%2F435882538%2F1900090885.mp4~hmac=2a068126d75ff3b1cc51797157689af3f4a24e15149696e38b48ccba20ec4a23/vimeo-prod-skyfire-std-us/01/2176/17/435882538/1900090885.mp4'>
+        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
           <Text>Video 2 should go here</Text>
         </VideoPlayer>
       </View>
+      <View key="3">
+        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
+          <Text>Video 2 should go here</Text>
+        </VideoPlayer>
+      </View>
+
     </PagerView>
 
   );
@@ -192,6 +223,7 @@ function App() {
       <Stack.Navigator initialRouteName="Home" independent = {true}>
         <Stack.Screen name="Home" component={Page} />
         <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} />
+        <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
