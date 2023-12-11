@@ -8,6 +8,8 @@ import { firebaseApp } from "../database/firebaseConfig";
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './Home.js';
+import SelectDropdown from 'react-native-select-dropdown'
+
 
 // const LoginScreen = () => {
 // }
@@ -67,13 +69,16 @@ export default function LoginScreen({navigation}) {
     // const navigation = useNavigation();
     const [em, setEmail] = useState("");
     const [pa, setPassword] = useState("");
-    // const [n, setName] = useState("");
-    // const [r, setRole] = useState("");
+    const [n, setName] = useState("");
+    const [r, setRole] = useState("");
 
     const auth = getAuth(firebaseApp);
     const handleSubmit = (e) => {
         let email = em.toLowerCase().trim();
         let password = pa;
+
+
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed up 
@@ -87,15 +92,15 @@ export default function LoginScreen({navigation}) {
                 // ..
             });
 
-        // updateProfile(auth.currentUser, {
-        //     displayName: n, role: r
-        // }).then(() => {
-        //     // Profile updated!
-        //     // ...
-        // }).catch((error) => {
-        //     // An error occurred
-        //     // ...
-        // });
+        updateProfile(auth.currentUser, {
+            displayName: n, role: r
+        }).then(() => {
+            // Profile updated!
+            // ...
+        }).catch((error) => {
+            // An error occurred
+            // ...
+        });
 
         // const navigation = useNavigation();
         // navigation.navigate("HomeScreen");
@@ -125,7 +130,7 @@ export default function LoginScreen({navigation}) {
                     blurOnSubmit={true}
                 />
             </View>
-            {/* <View style={styles.inputView}>
+            <View style={styles.inputView}>
                 <TextInput
                     style={styles.TextInput}
                     placeholder="Display Name"
@@ -136,6 +141,27 @@ export default function LoginScreen({navigation}) {
                 />
             </View>
             <View style={styles.inputView}>
+
+            <SelectDropdown
+
+                data={["Student", "Teacher", "Tutor"]}
+                onSelect={(selectedItem, index) => {
+                    console.log(selectedItem, index)
+                }}
+                buttonTextAfterSelection={(selectedItem, index) => {
+                    // text represented after item is selected
+                    // if data array is an array of objects then return selectedItem.property to render after item is selected
+                    return selectedItem
+                }}
+                rowTextForSelection={(item, index) => {
+                    // text represented for each item in dropdown
+                    // if data array is an array of objects then return item.property to represent item in dropdown
+                    return item
+                }}
+            />
+
+{/*                 
+
                 <TextInput
                     style={styles.TextInput}
                     placeholder="Role"
@@ -143,8 +169,8 @@ export default function LoginScreen({navigation}) {
                     secureTextEntry={true}
                     onChangeText={(r) => setRole(r)}
                     blurOnSubmit={true}
-                />
-            </View> */}
+                /> */}
+            </View>
             <View style={styles.loginBtn}>
                 <Button title={"LOG IN"} onPress={handleSubmit} />
             </View>

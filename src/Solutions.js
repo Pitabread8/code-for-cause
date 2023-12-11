@@ -79,7 +79,7 @@ const Solution = (uriIn, text) => {
             ref={video}
             style={styles.video}
             source={{
-                uri: "https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4",
+                uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
             }}
             useNativeControls
             resizeMode="contain"

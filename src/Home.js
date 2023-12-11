@@ -86,6 +86,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold'
+  }, 
+  reelPage: {
+    BackgroundColor: 'black'
+
   }
 
 });
@@ -120,7 +124,7 @@ const VideoPlayer = ({ uriIn }) => {
   }
 
   return (
-    <View>
+    <View style = {styles.reelPage}>
       <TouchableWithoutFeedback onPress={togglePlay}>
 
         <Video
@@ -172,14 +176,16 @@ function pageHasScrolled() {
 }
 
 export default function HomeScreen({ navigation, route }) {
-
+  
   const video2 = React.useRef(null);
   const [status2, setStatus2] = React.useState({});
   // const AnimatedPager = Animated.createAnimatedComponent(PagerView);
 
-  //backup uri's: 
-  //
+  //backup uri's: https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4
+  // https://vod-progressive.akamaized.net/exp=1702186298~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4822%2F18%2F474112391%2F2113952540.mp4~hmac=b6adb6bb053ba3611737f79aa9ff76abfbabd35027caacb10fbdc2ddbde5643c/vimeo-prod-skyfire-std-us/01/4822/18/474112391/2113952540.mp4
 
+
+  //final green backup: https://vod-progressive.akamaized.net/exp=1702187399~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984264%2F1840393178.mp4~hmac=dd9152bf08ca9f8a474637035fa80b20c4a485d12d38a010ddc2c8f1a79a2740/vimeo-prod-skyfire-std-us/01/4996/16/424984264/1840393178.mp4
 
 
 
@@ -188,7 +194,7 @@ export default function HomeScreen({ navigation, route }) {
       <View key="1" style={styles.container}>
 
         <View style={styles.container}>
-          <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
+          <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4'>
 
 
           </VideoPlayer>
@@ -199,12 +205,12 @@ export default function HomeScreen({ navigation, route }) {
 
       </View>
       <View key="2">
-        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
+        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4'>
           <Text>Video 2 should go here</Text>
         </VideoPlayer>
       </View>
       <View key="3">
-        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702180119~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F660%2F16%2F403302551%2F1724578450.mp4~hmac=64f60ea982232335f80b0859fae7d389c103b24c3e5e6e339b9353c3bec97b22/vimeo-prod-skyfire-std-us/01/660/16/403302551/1724578450.mp4'>
+        <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4'>
           <Text>Video 2 should go here</Text>
         </VideoPlayer>
       </View>
