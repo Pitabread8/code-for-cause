@@ -77,7 +77,7 @@ const UploadVideo = () => {
     );
 }
 
-const QuestionScreen = ({ navigation, route }) => {
+const QuestionScreen = () => {
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             <TextInput

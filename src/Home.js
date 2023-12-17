@@ -1,34 +1,11 @@
 
-// List of apis you can use with react native is found here: 
-// https://reactnative.dev/docs/stylesheet
-// https://reactnative.dev/docs/flatlist
-// How to start the project: 
-// https://blog.expo.dev/the-new-expo-cli-f4250d8e3421
-// use npx expo start in the /Weatherapp to run it 
-
-// how to install the navigator https://youtu.be/obH0Po_RdWk?si=klORU0qd5ZSoEnF2&t=9018
-
-
-
-
 import * as React from 'react';
-import { View, StyleSheet, Button, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { Video } from 'expo-av';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 import PagerView from 'react-native-pager-view';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import QuestionScreen from './Question.js';
-// import SolutionsScreen from './Solutions.js';
-// import LoginScreen from './Login.js';
-
-
-
-// import Animated, { useHandler, useEvent } from 'react-native-reanimated';
-
-const Stack = createNativeStackNavigator();
-
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   overlay: {
@@ -37,7 +14,6 @@ const styles = StyleSheet.create({
     top: 0,
     backgroundColor: 'black',
     color: 'black'
-
   },
   pagerView: {
     flex: 1,
@@ -86,12 +62,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold'
-  }, 
+  },
   reelPage: {
     BackgroundColor: 'black'
 
   }
-
 });
 
 
@@ -124,9 +99,8 @@ const VideoPlayer = ({ uriIn }) => {
   }
 
   return (
-    <View style = {styles.reelPage}>
+    <View style={styles.reelPage}>
       <TouchableWithoutFeedback onPress={togglePlay}>
-
         <Video
           ref={video}
           style={styles.video}
@@ -139,70 +113,43 @@ const VideoPlayer = ({ uriIn }) => {
           shouldPlay={status.shouldPlay}
           onPlaybackStatusUpdate={(newStatus) => setStatus(() => newStatus)}
         />
-
-
       </TouchableWithoutFeedback>
+
       <View style={styles.solutions}>
         <TouchableOpacity onPress={goToSolutions}>
           <FontAwesome5 name="lightbulb" size={50} color="black" />
         </TouchableOpacity>
-
       </View>
 
       <View style={styles.likeButton}>
         <TouchableOpacity onPress={likeVideo}>
           <FontAwesome5 name="heart" size={50} color="black" />
         </TouchableOpacity>
-
       </View>
 
       <View style={styles.questionButton}>
         <TouchableOpacity onPress={askQuestion}>
           <FontAwesome5 name="rocketchat" size={50} color="black" />
         </TouchableOpacity>
-
       </View>
-
-
-
     </View>
   );
 };
 
 
 function pageHasScrolled() {
-  console.log("page has Scrolled")
-
+  console.log("page has scrolled")
 }
 
-export default function HomeScreen({ navigation, route }) {
-  
-  const video2 = React.useRef(null);
-  const [status2, setStatus2] = React.useState({});
-  // const AnimatedPager = Animated.createAnimatedComponent(PagerView);
-
-  //backup uri's: https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4
-  // https://vod-progressive.akamaized.net/exp=1702186298~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4822%2F18%2F474112391%2F2113952540.mp4~hmac=b6adb6bb053ba3611737f79aa9ff76abfbabd35027caacb10fbdc2ddbde5643c/vimeo-prod-skyfire-std-us/01/4822/18/474112391/2113952540.mp4
-
-
-  //final green backup: https://vod-progressive.akamaized.net/exp=1702187399~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984264%2F1840393178.mp4~hmac=dd9152bf08ca9f8a474637035fa80b20c4a485d12d38a010ddc2c8f1a79a2740/vimeo-prod-skyfire-std-us/01/4996/16/424984264/1840393178.mp4
-
-
+export default function HomeScreen() {
 
   return (
     <PagerView style={styles.pagerView} initialPage={0} orientation="vertical" onPageScroll={pageHasScrolled()}>
       <View key="1" style={styles.container}>
-
         <View style={styles.container}>
           <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4'>
-
-
           </VideoPlayer>
-
-
         </View>
-
-
       </View>
       <View key="2">
         <VideoPlayer uriIn='https://vod-progressive.akamaized.net/exp=1702186250~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4996%2F16%2F424984267%2F1840393183.mp4~hmac=428ef288a42aa1e6cdf9f4e72cd4c40295d78f490c81d39944095c9ca359d113/vimeo-prod-skyfire-std-us/01/4996/16/424984267/1840393183.mp4'>
@@ -214,43 +161,6 @@ export default function HomeScreen({ navigation, route }) {
           <Text>Video 2 should go here</Text>
         </VideoPlayer>
       </View>
-
     </PagerView>
-
   );
 };
-
-
-
-
-
-
-// export default function HomeScreen({ navigation, route }) {
-//   <NavigationContainer>
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         name="Page"
-//         component={Page}
-//         // options={{ title: 'Welcome' }}
-//         options={{ headerShown: false }}
-//       />
-//       {/* <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} /> */}
-//       {/* <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} options={{ headerShown: false}} />
-//       <Stack.Screen name="QuestionScreen" component={QuestionScreen} options={{ headerShown: false}} /> */}
-//     </Stack.Navigator>
-//   </NavigationContainer>
-// }
-// function HomeScreen({navigation, route}) {
-//   return (
-//     <NavigationContainer independent = {true}>
-//       <Stack.Navigator independent = {true}>
-//         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-//         <Stack.Screen name="Home" component={Page} />
-//         <Stack.Screen name="SolutionsScreen" component={SolutionsScreen} />
-//         <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
